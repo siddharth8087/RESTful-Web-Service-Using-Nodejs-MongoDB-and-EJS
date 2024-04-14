@@ -1,0 +1,100 @@
+<%- include('./partials/header.ejs') %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 mt-3">
+      <h2 class="alert alert-success text-center">Add New Person</h2>
+      <form action="" method="post">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="age" class="form-label">Age</label>
+          <input
+            type="number"
+            class="form-control"
+            id="age"
+            name="age"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="gender" class="form-label">Gender : [Male/Female/Others]</label>
+          <input
+            type="text"
+            class="form-control"
+            id="gender"
+            name="gender"
+            required
+          />
+          <!-- 'required' attribute ensures that the field is not empty -->
+        </div>
+        <div class="mb-3">
+          <label for="mobileNumber" class="form-label">Mobile Number</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="mobileNumber"
+            name="mobileNumber"
+            pattern="[0-9]{10}"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-light">Submit</button>
+      </form>
+    </div>
+    <div class="col-sm-6 mt-3">
+      <h2 class="alert alert-danger text-center">List all student</h2>
+      <%# Show All Data %>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Mobile Number</th>
+
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach((item, index) => { %>
+          <!-- Iterate over the data array -->
+          <tr>
+            <td><%= index + 1 %></td>
+            <!-- Increment index to start from 1 -->
+            <td><%= item.name %></td>
+            <!-- Access properties of each item -->
+            <td><%= item.age %></td>
+            <td><%= item.gender %></td>
+            <td><%= item.mobileNumber %></td>
+            <td>
+                <td>
+                    <!-- Wrap buttons in a div with class "btn-group" -->
+                    <div class="btn-group" role="group">
+                        <form action="/person/edit/<%= item._id %>" class="d-inline" method="post">
+                            <button type="submit" class="btn btn-info ">Edit</button>
+                        </form>
+                        <form action="/person/delete/<%= item._id %>" class="d-inline" method="post">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </td>
+                
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%- include('./partials/footer.ejs') %>

@@ -1,0 +1,53 @@
+<%- include('./partials/header.ejs') %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 mt-2">
+      <h2 class="alert alert-success text-center">Update Person</h2>
+      <form action="/person/update/<%= data._id%>" method="post">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            value="<%= data.name %>"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="age" class="form-label">Age</label>
+          <input
+            type="number"
+            class="form-control"
+            id="age"
+            name="age"
+            value="<%= data.age %>"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="gender" class="form-label">Gender</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Gender"
+            name="Gender"
+            value="<%= data.gender %>"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="mobileNumber" class="form-label">Mobile Number</label>
+          <input
+            type="mobileNumber"
+            class="form-control"
+            id="mobileNumber"
+            name="mobileNumber"
+            value="<%= data.mobileNumber %>"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="submit" class="btn btn-secondary">Back To Home</button>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('./partials/footer.ejs') %>
